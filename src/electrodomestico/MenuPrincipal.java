@@ -221,13 +221,16 @@ public class MenuPrincipal{
         int color;
         for (int i=0;i<10;i++){
             if (vector[i]!=null){
-                System.out.println("INGRESE 1 SI DESEA VERIFICAR COLOR DEL OBJETO EN LA POSICION  "+i+",2 PARA SALR");
+                System.out.println("INGRESE 1 SI DESEA VERIFICAR COLOR DEL OBJETO EN LA POSICION  "+i+" ,2 PARA SALR ,EN CASO DE QUE DESEE EVALUAR EL SIGUIENTE OBJETO ESCRIBA OTRO NUMERO");
                 ingrese=sc.nextByte();
                 if (ingrese==1){
                     System.out.println("INGRESE EL COLOR A VERIFICAR");
                     System.out.println("1 PARA BLANCO,2 PARA NEGRO, 3 PARA ROJO,4 PARA AZUL Y 5 PARA GRIS");
                     color=sc.nextInt();
                     System.out.println(vector[i].comprobarColor(tipoColor(color)));
+                }
+                if (ingrese==2){
+                    break;
                 }
             }
         }
