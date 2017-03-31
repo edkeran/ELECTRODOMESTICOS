@@ -18,6 +18,10 @@ public class MenuPrincipal{
  int seleccion=0;
  
  /**
+  * Variable encargada de almacenar la suma total de todos los objetos 
+  */
+ double totalSuma=0;
+ /**
   * creacion del objeto de la clase Scanner para el manejo de lectura de datos 
   */
  Scanner sc= new Scanner(System.in);
@@ -33,6 +37,7 @@ public class MenuPrincipal{
     public MenuPrincipal() {
         instanciarObjetos();
         imprimirCalculos();
+        leerColor();
     }
     
     /**
@@ -41,7 +46,7 @@ public class MenuPrincipal{
      */
     private void instanciarObjetos(){
         for (int i=0;i<10;i++){
-        System.out.println("INGRESE 1 SI DESEA PROCESAR TELEVISON O 2 SI DESEA PROCESAR LAVADORA");
+        System.out.println("INGRESE 1 SI DESEA PROCESAR TELEVISON O 2 SI DESEA PROCESAR LAVADORA EN CASO DE QUE DESSE DEJAR DE INGRESAR OBJETOS INGRESE 3");
          seleccion=sc.nextInt();
          
          if (seleccion==1){
@@ -120,6 +125,9 @@ public class MenuPrincipal{
                      vector[i]=l;
                  }   
              }
+                else if (seleccion==3){
+                     break;
+              } 
          }
     }
     
@@ -192,14 +200,36 @@ public class MenuPrincipal{
      */
     private void imprimirCalculos(){
          for (int i=0;i<10;i++){
-             if (vector[i].getTipo()==1){
+             if (vector[i]!=null){
+                 if (vector[i].getTipo()==1){
                  System.out.print("TELEVISOR    ");
+                 }
+                 if (vector[i].getTipo()==2){
+                     System.out.print("                           LAVADORA ");
+                 }
                  vector[i].precioFinal();
-             }
-             if (vector[i].getTipo()==2){
-                 System.out.print("                           LAVADORA ");
-                 vector[i].precioFinal();
-             }
+                 totalSuma+=vector[i].getPrecioBase();
+                }
          }
+         System.out.println("LA SUMA TOTAL DE LOS OBJETOS ES DE:"+totalSuma);
+    }
+    /**
+     * Metdo encargado de verificar el color ingresado por el usuario y el que se encuentre instaciado por defecto
+     */
+    private void leerColor(){
+        byte ingrese;
+        int color;
+        for (int i=0;i<10;i++){
+            if (vector[i]!=null){
+                System.out.println("INGRESE 1 SI DESEA VERIFICAR COLOR DEL OBJETO EN LA POSICION  "+i+",2 PARA SALR");
+                ingrese=sc.nextByte();
+                if (ingrese==1){
+                    System.out.println("INGRESE EL COLOR A VERIFICAR");
+                    System.out.println("1 PARA BLANCO,2 PARA NEGRO, 3 PARA ROJO,4 PARA AZUL Y 5 PARA GRIS");
+                    color=sc.nextInt();
+                    System.out.println(vector[i].comprobarColor(tipoColor(color)));
+                }
+            }
+        }
     }
 }

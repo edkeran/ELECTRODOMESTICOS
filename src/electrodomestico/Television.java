@@ -62,6 +62,7 @@ public class Television extends Electrodomestico{
         super(precioBase, color, consumoEnergetico, peso);
         this.resolucion = resolucion;
         this.Tdt = Tdt;
+        super.setTipo(1);
     }
     
     /**
