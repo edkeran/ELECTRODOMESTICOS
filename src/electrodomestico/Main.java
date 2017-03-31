@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package electrodomestico;
 
+package electrodomestico;
+/**
+ * clase principal por donde arranca el programa
+ * @author Edgar Kreicj
+ * @author Michael Cardenas
+ */
 public class Main{
+    /**
+     * se instancia el objeto pero aun no se crea
+     */
      Electrodomestico vector[];
+     
      public static void main(String[] args) {
-        // TODO code application logic here
-        //JFRAME JPANEL JBUTON JLABEL PROXIMA CLASE UML 
-        //start uml o arquiect proyect
+         /**
+          * se crea un objeto para llamar al metodo que pide los datos y los lee.
+          */
         MenuPrincipal a= new MenuPrincipal();
      }
 }

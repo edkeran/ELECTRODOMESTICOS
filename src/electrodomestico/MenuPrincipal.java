@@ -1,43 +1,69 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package electrodomestico;
 
 import java.util.Scanner;
 
-/**
+/** 
+ * clase encargada de leer los datos para el funcionamiento logico del programa
  * @author EDGAR ANDRES KREJCI BAUTISTA
+ * @Michael Leandro Cardenas Villamil
  */
 public class MenuPrincipal{
+ 
  int total=0;
+ 
+ /**
+  * encargado de guardar la eleccion de calcular la tv o la lavadora
+  */
  int seleccion=0;
+ 
+ /**
+  * creacion del objeto de la clase Scanner para el manejo de lectura de datos 
+  */
  Scanner sc= new Scanner(System.in);
+ 
+ /**
+  * creacion del array de objetos de 10 posiciones de la superclase
+  */
  Electrodomestico[] vector= new Electrodomestico[10];
+ 
+ /**
+  * metodo publico que reune dos metodos mas privados
+  */
     public MenuPrincipal() {
         instanciarObjetos();
         imprimirCalculos();
     }
+    
+    /**
+     * metodo que usa polimorfismo para que la superclase cambie de atributos y pide 
+     * los datos necesario para guardarlos en objetos
+     */
     private void instanciarObjetos(){
         for (int i=0;i<10;i++){
         System.out.println("INGRESE 1 SI DESEA PROCESAR TELEVISON O 2 SI DESEA PROCESAR LAVADORA");
          seleccion=sc.nextInt();
+         
          if (seleccion==1){
            System.out.println("HA INGRESADO EL OBJETO TELEVISION");
-           ImprimirMenu();
+           ImprimirMenu(); //llama a la funcion imprimir menu
            seleccion=sc.nextInt();
-           if (seleccion==1){
+           /**
+            * creacion del objeto tipo electrodomestico
+            */
              Electrodomestico e = new Television();
              vector[i]=e;
-           }
+             
            if (seleccion==2){
                 int precioBase,peso;
                 System.out.println("INGRESE EL PRECIO BASE DEL TELEVISOR");
                 precioBase=sc.nextInt();
                 System.out.println("INGRESE EL PESO DEL TELEVISOR");
                 peso=sc.nextInt();
-                Electrodomestico h = new Television(precioBase,peso);
+                /**
+                 * creacion del objeto y guardara los datos que recibe
+                 */
+                Electrodomestico h = new Television(precioBase,peso); 
                 vector[i]=h;
                 }
            if (seleccion==3){
@@ -96,11 +122,21 @@ public class MenuPrincipal{
              }
          }
     }
+    
+    /**
+     * metodo que imprime la opcion a escojer
+     */
     public void ImprimirMenu() {
         System.out.println("SI DESEA INGRESAR AL CONSTRCTOR VACIO DEL OBJETO  TODOS LOS CALCULOS SE HARAN CON LOS VALORES PREDETERMINADOS INGRESE 1");
         System.out.println("SI DESEA INGRESAR AL CONSTUCTOR EN DONDE INGRESARA EL PRECIO Y EL PESO CON EL RESTO POR DEFECTO INGRESE 2");
         System.out.println("SI DESEA INGRESAR AL CONSTRUCCTOR EN DONDE SE VA A INGREASAR TODA LA INFORMACION INGRESE 3");
     }
+    
+    /**
+     * metodo valida el valor correcto para cada letra
+     * @param letra variable que recibe y la usa 
+     * @return devuelve el resultado final
+     */
     private Letra tipoConsumoEnergetico(int letra){
         if (letra==1){
             return Letra.A;
@@ -124,6 +160,12 @@ public class MenuPrincipal{
             return Letra.F;
         }
     }
+    
+    /**
+     * metodo que valoda el valor correcto segun el color
+     * @param color lo recibe y con este realiza las comparaciones
+     * @return 
+     */
     private Colores tipoColor(int color){
         if (color==1){
             return Colores.BLANCO;
@@ -144,6 +186,10 @@ public class MenuPrincipal{
             return Colores.BLANCO;
         }
     }
+    
+    /**
+     * metodo que imprime los calculos finales
+     */
     private void imprimirCalculos(){
          for (int i=0;i<10;i++){
              if (vector[i].getTipo()==1){

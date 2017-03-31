@@ -1,17 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package electrodomestico;
 
+
+
 /**
- *
- * @author EDGAR
+ * clase interface para manejar metodos que se cree usaran todas las clases obligatoriamente menos la abstracta o principal
+ * @author Edgar Kreicj
+ * @author Michael Cardenas
  */
 public interface Interface {
     public void precioFinal();
-    public double getPrecioBase();
-    public int getPeso();
     
+    public double getPrecioBase();
+    
+    public int getPeso();
 }
